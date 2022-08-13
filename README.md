@@ -56,8 +56,9 @@ ORDER BY DESC(?numberOfDeaths)
 
 ### With colours
 * Manually defined threshold to show different colours depending on the number of deaths
-* Potentially bugs: Mina (2411 deaths, 2015) does not show
-* Did not found how to specify the colour for each category so it does not match the importance (red for smaller stampedes)
+* Be careful: Mina (2411 deaths, 2015) is not shown because one event in a layer may hide some other in different layers
+* Did not found how to specify the colour for each category (looks it's hard-coded) it does not match the importance (red for smaller stampedes)
+* Changing the order in which the categories are defined does not change the color
 
 ```SPARQL
 #title:Stampedes repertoried on Wikidata
