@@ -41,15 +41,13 @@ SELECT DISTINCT * WHERE {
 
 SELECT DISTINCT ?coords (CONCAT (STR(?numberOfInjuries), " injured") AS $injured) (CONCAT (STR(?numberOfDeaths), " dead") AS $dead) ?placePicture ?placeLabel ?countryLabel ?date ?item ?itemLabel WHERE {
       ?item wdt:P31/wdt:P279* wd:Q2165983.
-      OPTIONAL {
-      ?item wdt:P585 ?date.
-      ?item wdt:P625 ?coords.
-      ?item wdt:P1120 ?numberOfDeaths.
-      ?item wdt:P1339 ?numberOfInjuries.
-      ?item wdt:P276 ?place.
-      ?item wdt:P17 ?country.
-      ?place wdt:P18 ?placePicture #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
-      }
+      OPTIONAL {?item wdt:P585 ?date. }
+      OPTIONAL {?item wdt:P625 ?coords. }
+      OPTIONAL {?item wdt:P1120 ?numberOfDeaths.
+                ?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P276 ?place.
+                ?item wdt:P17 ?country.
+                ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
    }
 ORDER BY DESC(?numberOfDeaths)
@@ -70,15 +68,13 @@ ORDER BY DESC(?numberOfDeaths)
 
 SELECT DISTINCT ?layer ?coords (CONCAT (STR(?numberOfInjuries), " injured") AS $injured) (CONCAT (STR(?numberOfDeaths), " dead") AS $dead) ?placePicture ?placeLabel ?countryLabel ?date ?item ?itemLabel WHERE {
       ?item wdt:P31/wdt:P279* wd:Q2165983.
-      OPTIONAL {
-      ?item wdt:P585 ?date.
-      ?item wdt:P625 ?coords.
-      ?item wdt:P1120 ?numberOfDeaths.
-      ?item wdt:P1339 ?numberOfInjuries.
-      ?item wdt:P276 ?place.
-      ?item wdt:P17 ?country.
-      ?place wdt:P18 ?placePicture #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
-      }
+      OPTIONAL {?item wdt:P585 ?date. }
+      OPTIONAL {?item wdt:P625 ?coords. }
+      OPTIONAL {?item wdt:P1120 ?numberOfDeaths.
+                ?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P276 ?place.
+                ?item wdt:P17 ?country.
+                ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
       BIND(
       IF(?numberOfDeaths > 1000, "More than 1000 deaths",
       IF(?numberOfDeaths > 100, "More than 100 deaths",
