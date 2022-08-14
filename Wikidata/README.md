@@ -1,4 +1,11 @@
-# Stampedes and crowd movements on Wikidata
+# Stampedes and crowd disasters on Wikidata
+
+The goals of this project are to:
+* Examine the crowd disasters data available on Wikidata and compare it to research sources;
+* Improve the crowd disaster on Wikidata;
+* Provide a map of crowd disasters using Wikidata.
+
+The project started in August 2022. I use [Wikidata query requests](https://query.wikidata.org/) to display the data (CC0 license) from Wikidata.
 
 ## Wikidata Requests
 ### First request
