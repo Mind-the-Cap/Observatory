@@ -1,4 +1,4 @@
-# Observatory
+# Stampedes and crowd movements on Wikidata
 
 ## Wikidata Requests
 ### First request
