@@ -92,7 +92,7 @@ ORDER BY DESC(?numberOfDeaths)
 
 ### With causes
 * See [Help:Modeling causes](https://www.wikidata.org/wiki/Help:Modeling_causes) for context
-* Troubles the table so mostly useful for CSV. Used this request to save a first export.
+* Troubles the table so mostly useful for CSV. Used this request to save a [first export](StampedeWikidataExport_20220814.csv).
 ```SPARQL
 #title:Stampedes repertoried on Wikidata
 #Built on August 2022 by Capucine-Marin Dubroca-Voisin (work in progress)
@@ -107,7 +107,7 @@ SELECT DISTINCT ?layer ?causeLabel ?immediateCauseLabel ?contributingFactorLabel
       OPTIONAL {?item wdt:P1120 ?numberOfDeaths. }
       OPTIONAL {?item wdt:P1339 ?numberOfInjuries. }
       OPTIONAL {?item wdt:P1561 ?numberOfSurvivors. }
-      OPTIONAL {?item wdt:P276 ?place.
+      OPTIONAL {?item wdt:P276 ?place. #these 3 less importants properties are grouped for optimisation reasons
                 ?item wdt:P17 ?country.
                 ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
       OPTIONAL {?item wdt:P828 ?cause. }
