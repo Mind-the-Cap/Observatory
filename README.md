@@ -43,8 +43,9 @@ SELECT DISTINCT ?coords (CONCAT (STR(?numberOfInjuries), " injured") AS $injured
       ?item wdt:P31/wdt:P279* wd:Q2165983.
       OPTIONAL {?item wdt:P585 ?date. }
       OPTIONAL {?item wdt:P625 ?coords. }
-      OPTIONAL {?item wdt:P1120 ?numberOfDeaths.
-                ?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P1120 ?numberOfDeaths. }
+      OPTIONAL {?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P1561 ?numberOfSurvivors. }
       OPTIONAL {?item wdt:P276 ?place.
                 ?item wdt:P17 ?country.
                 ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
@@ -71,8 +72,9 @@ SELECT DISTINCT ?layer ?coords (CONCAT (STR(?numberOfInjuries), " injured") AS $
       ?item wdt:P31/wdt:P279* wd:Q2165983.
       OPTIONAL {?item wdt:P585 ?date. }
       OPTIONAL {?item wdt:P625 ?coords. }
-      OPTIONAL {?item wdt:P1120 ?numberOfDeaths.
-                ?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P1120 ?numberOfDeaths. }
+      OPTIONAL {?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P1561 ?numberOfSurvivors. }
       OPTIONAL {?item wdt:P276 ?place.
                 ?item wdt:P17 ?country.
                 ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
@@ -91,7 +93,6 @@ ORDER BY DESC(?numberOfDeaths)
 ### With causes
 * See [Help:Modeling causes](https://www.wikidata.org/wiki/Help:Modeling_causes) for context
 * Troubles the table so mostly useful for CSV. Used this request to save a first export.
-* Also added number of survivors
 ```SPARQL
 #title:Stampedes repertoried on Wikidata
 #Built on August 2022 by Capucine-Marin Dubroca-Voisin (work in progress)
@@ -103,9 +104,9 @@ SELECT DISTINCT ?layer ?causeLabel ?immediateCauseLabel ?contributingFactorLabel
       ?item wdt:P31/wdt:P279* wd:Q2165983.
       OPTIONAL {?item wdt:P585 ?date. }
       OPTIONAL {?item wdt:P625 ?coords. }
-      OPTIONAL {?item wdt:P1120 ?numberOfDeaths.
-                ?item wdt:P1339 ?numberOfInjuries.
-                ?item wdt:P1561 ?numberOfSurvivors. }
+      OPTIONAL {?item wdt:P1120 ?numberOfDeaths. }
+      OPTIONAL {?item wdt:P1339 ?numberOfInjuries. }
+      OPTIONAL {?item wdt:P1561 ?numberOfSurvivors. }
       OPTIONAL {?item wdt:P276 ?place.
                 ?item wdt:P17 ?country.
                 ?place wdt:P18 ?placePicture. } #photo of the place where the stampede occurred (less aggressive than a photo of the stampede itself)
