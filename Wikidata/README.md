@@ -134,3 +134,34 @@ SELECT DISTINCT ?layer ?causeLabel ?immediateCauseLabel ?contributingFactorLabel
    }
 ORDER BY DESC(?numberOfDeaths)
 ```
+
+### Use coords from both the place and the crush item, use the different items for stampede or crush
+```
+#title:Stampedes repertoried on Wikidata
+#Built on August 2022 by Capucine-Marin Dubroca-Voisin (work in progress)
+#defaultView:Map{"hide": "?coords"}
+#view:Table{"hide": "?coords"}
+#view:Timeline{"hide": "?coords"}
+SELECT DISTINCT ?layer ?coords ?coordsp (CONCAT(STR(?numberOfInjuries), " injured") AS ?injured) (CONCAT(STR(?numberOfDeaths), " dead") AS ?dead) ?placePicture ?placeLabel ?countryLabel ?date ?item ?itemLabel WHERE {
+  VALUES ?crushtype {wd:Q109905701 wd:Q2165983 wd:Q106673346}
+  ?item wdt:P31 ?crushtype.
+  OPTIONAL {
+    ?item wdt:P585 ?date;
+      wdt:P1120 ?numberOfDeaths;
+      wdt:P1339 ?numberOfInjuries;
+      wdt:P17 ?country.
+  }
+  OPTIONAL {
+    ?item wdt:P625 ?coords.
+  }
+  OPTIONAL {
+    ?item wdt:P276 ?place.
+    ?place wdt:P625 ?coordsp;
+     wdt:P18 ?placePicture.
+  }
+  BIND(IF(?numberOfDeaths > 1000 , "More than 1000 deaths", IF(?numberOfDeaths > 100 , "More than 100 deaths", IF(?numberOfDeaths > 10 , "More than 10 deaths", "Less than 10 deaths"))) AS ?layer)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY DESC (?numberOfDeaths)
+```
+[https://w.wiki/7Q6B](w.wiki/7Q6B)
